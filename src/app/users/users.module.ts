@@ -8,11 +8,18 @@ import {
 import { environment } from 'src/environments/environment';
 import { UserService } from './services';
 import { SharedModule } from 'src/shared/shared.module';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
 
 export const BASE_URL = new InjectionToken<string>('base api token');
 
 @NgModule({
-  imports: [CommonModule, SharedModule],
+  imports: [
+    CommonModule, 
+    SharedModule, 
+    MatButtonModule, 
+    MatTableModule
+  ],
   declarations: [
     UserListComponent,
     UserListItemComponent,

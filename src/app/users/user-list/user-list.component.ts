@@ -11,10 +11,12 @@ import { UserFacade } from '../user.facade';
   providers: [UserService, UserFacade],
 })
 export class UserListComponent implements OnInit {
+  displayedColumns: string[] = ['name', 'gender', 'email', 'status'];
+  
   get users$(): Observable<UserResult[]> {
     return this.userFacade.users$;
   }
-
+  
   constructor(
     private userFacade: UserFacade
     ) {}

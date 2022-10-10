@@ -7,7 +7,6 @@ import { UserService } from './services';
 
 @Injectable()
 export class UserFacade {
-  userData$!: Observable<UserResult>;
   users$!: Observable<UserResult[]>;
 
   constructor(
@@ -20,6 +19,7 @@ export class UserFacade {
     this.loadingService.start();
     this.users$ = this.userService
       .getUsers()
-      .pipe(finalize(() => this.loadingService.stop()));
+      .pipe(
+        finalize(() => this.loadingService.stop()));
   }
 }
