@@ -8,4 +8,25 @@
 </mat-dialog-actions> -->
 
 
-<h1>{{user.name}}</h1>
+<form class="example-form" [formGroup]="form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name">
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Gender</mat-label>
+    <input matInput formControlName="gender">
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email">
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Status</mat-label>
+    <input matInput formControlName="status">
+  </mat-form-field>
+</form>
+
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close mat-dialog-close="true" (click)="submit()">Save</button>
+</div>

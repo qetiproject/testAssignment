@@ -37,10 +37,8 @@
         <mat-icon aria-hidden="false" fontIcon="edit" (click)="openDialog(user)"></mat-icon>
       </td>
     </ng-container>
-    <!-- (click)="openDialog(user)" -->
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </section>
-
-<!-- <button mat-raised-button (click)="openDialog()">click</button> -->

@@ -34,7 +34,8 @@ export class UsersListComponent implements OnInit {
 
   openDialog(user: UserResult) {
     let dialogRef = this.dialog.open(UserDetailComponent, {
-      data: user
+      width: '250px',
+      data: user,
     })
 
     dialogRef.afterClosed().subscribe(result => {
