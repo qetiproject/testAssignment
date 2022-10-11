@@ -10,6 +10,7 @@ import { UserService } from './services';
 import { SharedModule } from 'src/shared/shared.module';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 export const BASE_URL = new InjectionToken<string>('base api token');
 
@@ -18,7 +19,8 @@ export const BASE_URL = new InjectionToken<string>('base api token');
     CommonModule, 
     SharedModule, 
     MatButtonModule, 
-    MatTableModule
+    MatTableModule,
+    MatTooltipModule
   ],
   declarations: [
     UserListComponent,
