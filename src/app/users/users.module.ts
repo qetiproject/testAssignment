@@ -1,9 +1,5 @@
 import { InjectionToken, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  UserDetailComponent,
-  UserListComponent,
-} from '.';
 import { environment } from 'src/environments/environment';
 import { UserService } from './services';
 import { SharedModule } from 'src/shared/shared.module';
@@ -19,6 +15,7 @@ import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/materi
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { UserDetailComponent, UsersListComponent } from './index';
 
 export const BASE_URL = new InjectionToken<string>('base api token');
 
@@ -32,16 +29,14 @@ export const BASE_URL = new InjectionToken<string>('base api token');
     MatIconModule,
     MatCheckboxModule,
     MatDialogModule,
-    MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule,
     MatSnackBarModule,
 ],
   declarations: [
-    UserListComponent,
+    UsersListComponent,
     UserDetailComponent,
   ],
   providers: [
@@ -60,5 +55,6 @@ export const BASE_URL = new InjectionToken<string>('base api token');
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}
     }
   ],
+  entryComponents: [UserDetailComponent]
 })
 export class UsersModule {}

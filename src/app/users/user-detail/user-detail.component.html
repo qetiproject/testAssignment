@@ -1,23 +1,8 @@
-<form class="example-form" [formGroup]="form">
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Name</mat-label>
-    <input matInput formControlName="name">
-  </mat-form-field>
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Gender</mat-label>
-    <input matInput formControlName="gender">
-  </mat-form-field>
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Email</mat-label>
-    <input matInput formControlName="email">
-  </mat-form-field>
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Status</mat-label>
-    <input matInput formControlName="status">
-  </mat-form-field>
-</form>
+<h2 mat-dialog-title>Title</h2>
 
-<div mat-dialog-actions>
-  <button mat-button (click)="submit()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="user.name" cdkFocusInitial>Ok</button>
-</div>
+<mat-dialog-content>{{data.name}} content</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close mat-dialog-close="true">keep me logged in</button>
+  <button mat-button mat-dialog-close mat-dialog-close="false">log out</button>
+</mat-dialog-actions>
