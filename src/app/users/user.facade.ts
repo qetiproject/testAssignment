@@ -24,12 +24,12 @@ export class UserFacade {
         finalize(() => this.loadingService.stop()));
   }
 
-  userDetails(id: number) {
-    this.loadingService.start();
-    this.userData$ = this.userService
-      .getUserById(id)
-      .pipe(finalize(() => this.loadingService.stop()));
-  }
+  // userDetails(id: number) {
+  //   this.loadingService.start();
+  //   this.userData$ = this.userService
+  //     .getUserById(id)
+  //     .pipe(finalize(() => this.loadingService.stop()));
+  // }
 
   submit(body: UserView) {
     this.loadingService.start();

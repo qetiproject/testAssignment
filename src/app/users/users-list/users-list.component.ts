@@ -33,7 +33,6 @@ export class UsersListComponent implements OnInit {
   }
 
   openDialog(user: UserResult) {
-    console.log(user)
     let dialogRef = this.dialog.open(UserDetailComponent, {
       data: user
     })
