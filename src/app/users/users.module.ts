@@ -11,6 +11,8 @@ import { SharedModule } from 'src/shared/shared.module';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 export const BASE_URL = new InjectionToken<string>('base api token');
 
@@ -20,7 +22,9 @@ export const BASE_URL = new InjectionToken<string>('base api token');
     SharedModule, 
     MatButtonModule, 
     MatTableModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatIconModule,
+    MatCheckboxModule
   ],
   declarations: [
     UserListComponent,

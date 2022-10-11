@@ -11,8 +11,8 @@ import { UserFacade } from '../user.facade';
   providers: [UserService, UserFacade],
 })
 export class UserListComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'gender', 'email', 'status'];
-  
+  displayedColumns: string[] = ['name', 'gender', 'email', 'status', 'edit'];
+
   get users$(): Observable<UserResult[]> {
     return this.userFacade.users$;
   }
@@ -27,5 +27,9 @@ export class UserListComponent implements OnInit {
 
   fetchUser() {
     this.userFacade.getUsers();
+  }
+
+  edit(id: number) {
+    console.log("edit", id)
   }
 }
