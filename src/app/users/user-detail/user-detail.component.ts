@@ -19,23 +19,22 @@ export class UserDetailComponent implements OnInit {
   }
   constructor(
     private userFacade: UserFacade,
-    // public dialogRef: MatDialogRef<UserDetailComponent>,
-    // @Inject(MAT_DIALOG_DATA) public data: UserView,
+    public dialogRef: MatDialogRef<UserDetailComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: UserView,
   ) {
-    // console.log(data, "data")
   }
 
   onNoClick(): void {
-    // this.dialogRef.close();
+    this.dialogRef.close();
 
   }
 
   ngOnInit() {
-    // this.getUser();
+    this.getUser();
   }
 
-  // getUser() {
-  //   this.userFacade.userDetails(this.id);
-  // }
+  getUser() {
+    this.userFacade.userDetails(this.id);
+  }
 
 }

@@ -12,6 +12,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDialogModule} from '@angular/material/dialog';
 
 export const BASE_URL = new InjectionToken<string>('base api token');
 
@@ -24,6 +25,7 @@ export const BASE_URL = new InjectionToken<string>('base api token');
     MatTooltipModule,
     MatIconModule,
     MatCheckboxModule,
+    MatDialogModule
   ],
   declarations: [
     UserListComponent,

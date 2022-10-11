@@ -22,7 +22,7 @@ export class UserListComponent implements OnInit {
   
   constructor(
     private userFacade: UserFacade,
-    // public dialog: MatDialog
+    public dialog: MatDialog
     ) {}
 
   ngOnInit() {
@@ -34,15 +34,13 @@ export class UserListComponent implements OnInit {
   }
 
   openDialog(user: UserResult): void {
-    // const dialogRef = this.dialog.open(UserDetailComponent, {
-    //   width: '250px',
-    //   data: user,
-    // });
-
-    // console.log(user)
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    // });
+    const dialogRef = this.dialog.open(UserDetailComponent, {
+      width: '250px',
+      data: user,
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
   
 }
