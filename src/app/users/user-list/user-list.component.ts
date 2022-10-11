@@ -4,6 +4,7 @@ import { UserResult } from '../models/user';
 import { Observable } from 'rxjs';
 import { UserFacade } from '../user.facade';
 import {MatDialog} from '@angular/material/dialog';
+import { UserDetailComponent } from '../user-detail/user-detail.component';
 
 @Component({
   selector: 'app-user-list',
@@ -21,6 +22,7 @@ export class UserListComponent implements OnInit {
   constructor(
     private userFacade: UserFacade,
     public dialog: MatDialog,
+
     ) {}
 
   ngOnInit() {
@@ -33,17 +35,14 @@ export class UserListComponent implements OnInit {
 
   openDialog(user: UserResult): void {
     console.log(user)
-    // let dialogRef = this.dialog.open(UserDetailComponent, {
-    //   width: '250px',
-    //   data: user,
-    // });
+    let dialogRef = this.dialog.open(UserDetailComponent, {
+      width: '250px',
+      data: user,
+    });
    
-    // dialogRef.afterClosed().subscribe((res) => {
-    //   alert('result' + res)
-    // })
-
-   
-
+    dialogRef.afterClosed().subscribe((res) => {
+      alert('result' + res)
+    })
   }
-  
+
 }

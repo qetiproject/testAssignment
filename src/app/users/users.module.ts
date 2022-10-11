@@ -17,6 +17,8 @@ import {MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/mate
 import {MatInputModule} from '@angular/material/input';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 export const BASE_URL = new InjectionToken<string>('base api token');
 
@@ -35,7 +37,8 @@ export const BASE_URL = new InjectionToken<string>('base api token');
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule,
 ],
   declarations: [
     UserListComponent,
@@ -52,6 +55,9 @@ export const BASE_URL = new InjectionToken<string>('base api token');
     },
     { provide: ErrorStateMatcher, 
       useClass: ShowOnDirtyErrorStateMatcher
+    },
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}
     }
   ],
 })

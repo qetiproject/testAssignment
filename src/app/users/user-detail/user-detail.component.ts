@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Observable} from 'rxjs';
 import { UserView } from '../models';
 import { UserService } from '../services';
@@ -24,6 +25,7 @@ export class UserDetailComponent implements OnInit {
     private userFacade: UserFacade,
     public dialogRef: MatDialogRef<UserDetailComponent>,
     @Inject(MAT_DIALOG_DATA) public user: UserView,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -42,7 +44,16 @@ export class UserDetailComponent implements OnInit {
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
 
+  horizontalPosition: MatSnackBarHorizontalPosition = 'start';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
+  openSnackBar() {
+    this._snackBar.open('User data succesfull saved!!', '', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
   }
 
   submit() {
@@ -63,6 +74,7 @@ export class UserDetailComponent implements OnInit {
     };
 
     this.userFacade.submit(body);
+    this.openSnackBar()
   }
 
 }
