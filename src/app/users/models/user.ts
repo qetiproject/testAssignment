@@ -7,6 +7,9 @@ export interface UserResult {
 }
 
 export interface UserView {
-  name: string;
-  id: number;
+  id: number,
+  name: string,
+  email: string,
+  gender: string,
+  status: string
 }

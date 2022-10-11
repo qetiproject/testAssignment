@@ -34,7 +34,7 @@
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef> edit </th>
       <td mat-cell *matCellDef="let user">
-        <mat-icon aria-hidden="false" fontIcon="edit" (click)="edit(user.id)"></mat-icon>
+        <mat-icon aria-hidden="false" fontIcon="edit" (click)="openDialog(user)"></mat-icon>
       </td>
     </ng-container>
 

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import {
   UserDetailComponent,
   UserListComponent,
-  UserListItemComponent,
 } from '.';
 import { environment } from 'src/environments/environment';
 import { UserService } from './services';
@@ -24,11 +23,10 @@ export const BASE_URL = new InjectionToken<string>('base api token');
     MatTableModule,
     MatTooltipModule,
     MatIconModule,
-    MatCheckboxModule
+    MatCheckboxModule,
   ],
   declarations: [
     UserListComponent,
-    UserListItemComponent,
     UserDetailComponent,
   ],
   providers: [
