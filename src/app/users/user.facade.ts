@@ -31,5 +31,11 @@ export class UserFacade {
       .pipe(finalize(() => this.loadingService.stop()));
   }
 
+  submit(body: UserView) {
+    this.loadingService.start();
+    this.userService
+      .saveUser(body)
+      .pipe(finalize(() => this.loadingService.stop()))
+  }
 
 }

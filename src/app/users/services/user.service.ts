@@ -18,4 +18,8 @@ export class UserService {
   getUserById(id: number): Observable<UserView> {
     return this.http.get<UserView>(`${this.baseUrl}/users/${id}`);
   }
+
+  saveUser(user: UserView): Observable<UserView> {
+    return this.http.post<UserView>(`${this.baseUrl}/users`, user)
+  }
 }

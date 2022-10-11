@@ -12,7 +12,11 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 export const BASE_URL = new InjectionToken<string>('base api token');
 
@@ -25,8 +29,14 @@ export const BASE_URL = new InjectionToken<string>('base api token');
     MatTooltipModule,
     MatIconModule,
     MatCheckboxModule,
-    MatDialogModule
-  ],
+    MatDialogModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule
+],
   declarations: [
     UserListComponent,
     UserDetailComponent,
@@ -37,6 +47,12 @@ export const BASE_URL = new InjectionToken<string>('base api token');
       provide: BASE_URL,
       useValue: environment.baseUrl,
     },
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,        
+      useValue: {appearance: 'fill'}
+    },
+    { provide: ErrorStateMatcher, 
+      useClass: ShowOnDirtyErrorStateMatcher
+    }
   ],
 })
 export class UsersModule {}
