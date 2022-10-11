@@ -3,8 +3,8 @@ import { UserService } from '../services';
 import { UserResult } from '../models/user';
 import { Observable } from 'rxjs';
 import { UserFacade } from '../user.facade';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import { UserDetailComponent } from '../user-detail/user-detail.component';
+import { MatDialog } from '@angular/material/dialog';
+import { UserDetailComponent } from '../index'
 
 @Component({
   selector: 'app-users-list',

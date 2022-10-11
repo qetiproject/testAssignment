@@ -6,10 +6,4 @@ export interface UserResult {
   status: string
 }
 
-export interface UserView {
-  id: number,
-  name: string,
-  email: string,
-  gender: string,
-  status: string
-}
+export type UserView = UserResult

@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
 import { UserView } from '../models';
 import { UserService } from '../services';
 import { UserFacade } from '../user.facade';
@@ -16,25 +17,18 @@ export class UserDetailComponent implements OnInit {
   id!: number;
   form!: FormGroup;
   submited: boolean = false;
-  userData!: UserView;
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  // get userData$(): Observable<UserView> {
-  //   return this.userFacade.userData$;
-  // }
-
   constructor(
     @Inject(MAT_DIALOG_DATA) public user: UserView,
-    private userFacade: UserFacade,
-    private userService: UserService,
+    // private userFacade: UserFacade,
     private _snackBar: MatSnackBar
   ) {
-    this.id = user.id
   }
 
   ngOnInit(): void {
-    this.getUser(this.id);
+
     this.userForm()
   }
 
@@ -45,12 +39,6 @@ export class UserDetailComponent implements OnInit {
       email: new FormControl(this.user.email),
       status: new FormControl({value: this.user.status, disabled: true}),
     });
-  }
-
-  getUser(id: number){
-    this.userService.getUserById(id).subscribe((res) => {
-      this.userData= res
-    })
   }
 
   openSnackBar() {
