@@ -1,4 +1,4 @@
-<!-- <section class="container mat-elevation-z8" tabindex="0">
+<section class="container mat-elevation-z8" tabindex="0">
   <table mat-table [dataSource]="users$">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> name </th>
@@ -37,10 +37,10 @@
         <mat-icon aria-hidden="false" fontIcon="edit" (click)="openDialog(user)"></mat-icon>
       </td>
     </ng-container>
-
+    <!-- (click)="openDialog(user)" -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-</section> -->
+</section>
 
-<button mat-raised-button (click)="openDialog()">click</button>
+<!-- <button mat-raised-button (click)="openDialog()">click</button> -->

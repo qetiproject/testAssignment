@@ -1,26 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { UserResult } from '../models';
+import { UserService } from '../services';
+import { UserResult } from '../models/user';
+import { Observable } from 'rxjs';
+import { UserFacade } from '../user.facade';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { UserDetailComponent } from '../user-detail/user-detail.component';
 
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.css']
+  styleUrls: ['./users-list.component.css'],
+  providers: [UserService, UserFacade],
 })
 export class UsersListComponent implements OnInit {
+  displayedColumns: string[] = ['name', 'gender', 'email', 'status', 'edit'];
 
-  constructor(public dialog: MatDialog) {}
+  get users$(): Observable<UserResult[]> {
+    return this.userFacade.users$;
+  }
+  
+  constructor(
+    private userFacade: UserFacade,
+    public dialog: MatDialog,
+  ) {}
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void  {
+    this.fetchUser();
   }
 
-  openDialog() {
+  fetchUser() {
+    this.userFacade.getUsers();
+  }
+
+  openDialog(user: UserResult) {
+    console.log(user)
     let dialogRef = this.dialog.open(UserDetailComponent, {
-      data: {
-        name: 'keti'
-      }
+      data: user
     })
 
     dialogRef.afterClosed().subscribe(result => {
