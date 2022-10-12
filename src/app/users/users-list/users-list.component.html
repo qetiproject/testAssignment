@@ -1,5 +1,7 @@
+<mat-spinner *ngIf="loading"></mat-spinner>
+
 <section class="container mat-elevation-z8" tabindex="0">
-  <table mat-table [dataSource]="users$">
+  <table mat-table [dataSource]="users">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> name </th>
       <td mat-cell *matCellDef="let user" #tooltip="matTooltip" matTooltip={{user.name}}>

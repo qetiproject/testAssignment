@@ -1,27 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services';
 import { UserResult } from '../models/user';
-import { Observable } from 'rxjs';
-import { UserFacade } from '../user.facade';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDetailComponent } from '../index'
+import { StorageService } from 'src/app/services';
 
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.css'],
-  providers: [UserService, UserFacade],
+  providers: [UserService],
 })
 export class UsersListComponent implements OnInit {
   displayedColumns: string[] = ['name', 'gender', 'email', 'status', 'edit'];
 
-  get users$(): Observable<UserResult[]> {
-    return this.userFacade.users$;
-  }
+  users!: UserResult[];
+  loading: boolean = false
   
   constructor(
-    private userFacade: UserFacade,
     public dialog: MatDialog,
+    private storage: StorageService,
+    private userService: UserService,
   ) {}
 
   ngOnInit(): void  {
@@ -29,7 +28,13 @@ export class UsersListComponent implements OnInit {
   }
 
   fetchUser() {
-    this.userFacade.getUsers();
+    let getUser = JSON.parse(this.storage.get('updateUser'))
+    this.loading = true
+    this.userService.getUsers().subscribe(response => {
+     this.users = response
+     this.users = this.users.filter(e => e).map(e => e.id === getUser.id ? getUser : e);
+    })
+    this.loading = false
   }
 
   openDialog(user: UserResult) {
@@ -39,7 +44,9 @@ export class UsersListComponent implements OnInit {
     })
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Result: ${result}`)
+      if(result)  {
+        this.fetchUser()
+      }
     })
     
   }

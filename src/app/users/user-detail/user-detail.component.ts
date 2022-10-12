@@ -2,16 +2,15 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
+import { StorageService } from 'src/app/services';
 import { UserView } from '../models';
 import { UserService } from '../services';
-import { UserFacade } from '../user.facade';
 
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.css'],
-  providers: [UserFacade, UserService]
+  providers: [UserService]
 })
 export class UserDetailComponent implements OnInit {
   id!: number;
@@ -22,8 +21,8 @@ export class UserDetailComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public user: UserView,
-    // private userFacade: UserFacade,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private storage: StorageService
   ) {
   }
 
@@ -62,10 +61,10 @@ export class UserDetailComponent implements OnInit {
       name:  value.name,
       gender: value.gender,
       email: value.email,
-      status: value.status
+      status: this.user.status
     };
 
-    // this.userFacade.submit(body);
+    this.storage.set('updateUser', body)
     this.openSnackBar()
   }
 

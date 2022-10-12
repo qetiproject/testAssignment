@@ -2,7 +2,6 @@ import { InjectionToken, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { environment } from 'src/environments/environment';
 import { UserService } from './services';
-import { SharedModule } from 'src/shared/shared.module';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -16,13 +15,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { UserDetailComponent, UsersListComponent } from './index';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 export const BASE_URL = new InjectionToken<string>('base api token');
 
 @NgModule({
   imports: [
     CommonModule, 
-    SharedModule, 
+    FormsModule,
+    ReactiveFormsModule,
     MatButtonModule, 
     MatTableModule,
     MatTooltipModule,
@@ -31,9 +32,9 @@ export const BASE_URL = new InjectionToken<string>('base api token');
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule,
-    ReactiveFormsModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
+    
 ],
   declarations: [
     UsersListComponent,
