@@ -4,6 +4,7 @@ import { UserResult } from '../models/user';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDetailComponent } from '../index'
 import { StorageService } from 'src/app/services';
+import { finalize, map, tap } from 'rxjs';
 
 @Component({
   selector: 'app-users-list',
@@ -27,15 +28,22 @@ export class UsersListComponent implements OnInit {
     this.fetchUser();
   }
 
+
   fetchUser() {
     let getUser = JSON.parse(this.storage.get('updateUser'))
     this.loading = true
-    this.userService.getUsers().subscribe(response => {
-     this.users = response
-     this.users = this.users.filter(e => e).map(e => e.id === getUser.id ? getUser : e);
-    })
-    this.loading = false
+    this.userService.getUsers()
+      .pipe(
+        tap(n => console.log(n)),
+        map(x => {
+            this.users = x;
+            this.users = this.users.filter(e => e).map(e => e.id === getUser.id ? getUser : e);
+          }
+        ),
+        finalize(() => this.loading = false)
+      ).subscribe()
   }
+
 
   openDialog(user: UserResult) {
     let dialogRef = this.dialog.open(UserDetailComponent, {
